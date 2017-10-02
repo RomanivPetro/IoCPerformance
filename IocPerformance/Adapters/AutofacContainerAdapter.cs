@@ -87,7 +87,7 @@ namespace IocPerformance.Adapters
         {
             RegisterDummies(autofacContainerBuilder);
             RegisterStandard(autofacContainerBuilder);
-            //RegisterComplexObject(autofacContainerBuilder);
+            RegisterComplexObject(autofacContainerBuilder);
         }
 
         private static void RegisterDummies(ContainerBuilder autofacContainerBuilder)

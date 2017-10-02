@@ -20,12 +20,10 @@ namespace IocPerformance
             var containerBenchmarkResults = new List<BenchmarkResult>();
 
             Console.WriteLine(
-                "{0} {1}{2} {3,10} {4,10}",
+                "{0} {1}{2}",
                 container.Name,
                 container.Version,
-                new string(' ', Math.Max(0, benchmarks.Select(b => b.Name.Length).OrderByDescending(n => n).First() - container.Name.Length - container.Version.Length)),
-                "Single",
-                "Multi");
+                new string(' ', Math.Max(0, benchmarks.Select(b => b.Name.Length).OrderByDescending(n => n).First() - container.Name.Length - container.Version.Length)));
 
             try
             {

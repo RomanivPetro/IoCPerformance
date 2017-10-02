@@ -92,7 +92,7 @@ namespace IocPerformance.Adapters
         {
             RegisterDummies(autofacContainerBuilder);
             RegisterStandard(autofacContainerBuilder);
-            //RegisterComplexObject(autofacContainerBuilder);
+            RegisterComplexObject(autofacContainerBuilder);
         }
 
         private static void RegisterDummies(ContainerBuilder autofacContainerBuilder)
@@ -135,12 +135,12 @@ namespace IocPerformance.Adapters
 
         private static void RegisterComplexObject(ContainerBuilder autofacContainerBuilder)
         {
-            autofacContainerBuilder.Register(c => new FirstService()).As<IFirstService>().SingleInstance();
-            autofacContainerBuilder.Register(c => new SecondService()).As<ISecondService>().SingleInstance();
-            autofacContainerBuilder.Register(c => new ThirdService()).As<IThirdService>().SingleInstance();
-            autofacContainerBuilder.Register(c => new SubObjectOne(c.Resolve<IFirstService>())).As<ISubObjectOne>();
-            autofacContainerBuilder.Register(c => new SubObjectTwo(c.Resolve<ISecondService>())).As<ISubObjectTwo>();
-            autofacContainerBuilder.Register(c => new SubObjectThree(c.Resolve<IThirdService>())).As<ISubObjectThree>();
+            autofacContainerBuilder.Register(c => new FirstService()).As<IFirstService>().SingleInstance().EnableInterfaceInterceptors().InterceptedBy(typeof(AutofacInterceptionLogger)); ;
+            autofacContainerBuilder.Register(c => new SecondService()).As<ISecondService>().SingleInstance().EnableInterfaceInterceptors().InterceptedBy(typeof(AutofacInterceptionLogger)); ;
+            autofacContainerBuilder.Register(c => new ThirdService()).As<IThirdService>().SingleInstance().EnableInterfaceInterceptors().InterceptedBy(typeof(AutofacInterceptionLogger)); ;
+            autofacContainerBuilder.Register(c => new SubObjectOne(c.Resolve<IFirstService>())).As<ISubObjectOne>().EnableInterfaceInterceptors().InterceptedBy(typeof(AutofacInterceptionLogger)); ;
+            autofacContainerBuilder.Register(c => new SubObjectTwo(c.Resolve<ISecondService>())).As<ISubObjectTwo>().EnableInterfaceInterceptors().InterceptedBy(typeof(AutofacInterceptionLogger)); ;
+            autofacContainerBuilder.Register(c => new SubObjectThree(c.Resolve<IThirdService>())).As<ISubObjectThree>().EnableInterfaceInterceptors().InterceptedBy(typeof(AutofacInterceptionLogger)); ;
             autofacContainerBuilder.Register(c => new Complex1(c.Resolve<IFirstService>(), c.Resolve<ISecondService>(),
                 c.Resolve<IThirdService>(), c.Resolve<ISubObjectOne>(), c.Resolve<ISubObjectTwo>(),
                 c.Resolve<ISubObjectThree>())).As<IComplex1>().EnableInterfaceInterceptors().InterceptedBy(typeof(AutofacInterceptionLogger));

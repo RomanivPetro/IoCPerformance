@@ -27,26 +27,26 @@ namespace IocPerformance.Benchmarks
                     Benchmark.MethodToBenchmark(this.Container);
 
                     // If measurement takes more than one minute, stop and interpolate result
-                    if (i % 500 == 0 && watch.ElapsedMilliseconds > BenchmarkMeasurer.TimeLimit)
-                    {
-                        watch.Stop();
+                    //if (i % 500 == 0 && watch.ElapsedMilliseconds > BenchmarkMeasurer.TimeLimit)
+                    //{
+                    //    watch.Stop();
 
-                        result.Time = watch.ElapsedMilliseconds * this.Benchmark.LoopCount / i;
+                    //    result.Time = watch.ElapsedMilliseconds * this.Benchmark.LoopCount / i;
 
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine(
-                            BenchmarkMeasurer.TooSlowMessageFormat,
-                            Benchmark.Name,
-                            "single thread",
-                            (double)watch.ElapsedMilliseconds / (1000 * 60),
-                            i,
-                            this.Benchmark.LoopCount,
-                            (double)result.Time / (1000 * 60));
-                        Console.ResetColor();
+                    //    Console.ForegroundColor = ConsoleColor.Yellow;
+                    //    Console.WriteLine(
+                    //        BenchmarkMeasurer.TooSlowMessageFormat,
+                    //        Benchmark.Name,
+                    //        "single thread",
+                    //        (double)watch.ElapsedMilliseconds / (1000 * 60),
+                    //        i,
+                    //        this.Benchmark.LoopCount,
+                    //        (double)result.Time / (1000 * 60));
+                    //    Console.ResetColor();
 
-                        result.ExtraPolated = true;
-                        return result;
-                    }
+                    //    result.ExtraPolated = true;
+                    //    return result;
+                    //}
                 }
             }
             catch (Exception ex)
@@ -67,7 +67,7 @@ namespace IocPerformance.Benchmarks
 
             if (result.Error == null)
             {
-                result.Time = (long?) (watch.Elapsed.TotalMilliseconds * 1000000);
+                result.Time = (double) watch.Elapsed.TotalMilliseconds / Benchmark.LoopCount;
             }
 
             return result;

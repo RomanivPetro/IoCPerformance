@@ -14,7 +14,7 @@ namespace IocPerformance.Benchmarks
     {
         public virtual int LoopCount
         {
-            get => 4;
+            get => 1;
         }
 
         public virtual ThreadingCases Threading => ThreadingCases.Single | ThreadingCases.Multi;
@@ -54,6 +54,9 @@ namespace IocPerformance.Benchmarks
             Complex1.Instances = 0;
             Complex2.Instances = 0;
             Complex3.Instances = 0;
+            Complex1PS.Instances = 0;
+            Complex2PS.Instances = 0;
+            Complex3PS.Instances = 0;
             ImportGeneric<int>.Instances = 0;
             ImportGeneric<float>.Instances = 0;
             ImportGeneric<object>.Instances = 0;

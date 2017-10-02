@@ -89,7 +89,7 @@ namespace IocPerformance.Adapters
         {
             RegisterDummies(autofacContainerBuilder);
             RegisterStandard(autofacContainerBuilder);
-            //RegisterComplexObject(autofacContainerBuilder);
+            RegisterComplexObject(autofacContainerBuilder);
         }
 
         private static void RegisterDummies(ContainerBuilder autofacContainerBuilder)
@@ -123,15 +123,15 @@ namespace IocPerformance.Adapters
 
         private static void RegisterComplexObject(ContainerBuilder autofacContainerBuilder)
         {
-            autofacContainerBuilder.Register(c => new FirstService()).As<IFirstService>().SingleInstance();
-            autofacContainerBuilder.Register(c => new SecondService()).As<ISecondService>().SingleInstance();
-            autofacContainerBuilder.Register(c => new ThirdService()).As<IThirdService>().SingleInstance();
-            autofacContainerBuilder.Register(c => new SubObjectOne(c.Resolve<IFirstService>())).As<ISubObjectOne>();
-            autofacContainerBuilder.Register(c => new SubObjectTwo(c.Resolve<ISecondService>())).As<ISubObjectTwo>();
-            autofacContainerBuilder.Register(c => new SubObjectThree(c.Resolve<IThirdService>())).As<ISubObjectThree>();
-            autofacContainerBuilder.Register(c => new Complex1(c.Resolve<IFirstService>(), c.Resolve<ISecondService>(), c.Resolve<IThirdService>(), c.Resolve<ISubObjectOne>(), c.Resolve<ISubObjectTwo>(), c.Resolve<ISubObjectThree>())).As<IComplex1>();
-            autofacContainerBuilder.Register(c => new Complex2(c.Resolve<IFirstService>(), c.Resolve<ISecondService>(), c.Resolve<IThirdService>(), c.Resolve<ISubObjectOne>(), c.Resolve<ISubObjectTwo>(), c.Resolve<ISubObjectThree>())).As<IComplex2>();
-            autofacContainerBuilder.Register(c => new Complex3(c.Resolve<IFirstService>(), c.Resolve<ISecondService>(), c.Resolve<IThirdService>(), c.Resolve<ISubObjectOne>(), c.Resolve<ISubObjectTwo>(), c.Resolve<ISubObjectThree>())).As<IComplex3>();
+            autofacContainerBuilder.Register(c => new FirstServicePS()).As<IFirstService>().SingleInstance();
+            autofacContainerBuilder.Register(c => new SecondServicePS()).As<ISecondService>().SingleInstance();
+            autofacContainerBuilder.Register(c => new ThirdServicePS()).As<IThirdService>().SingleInstance();
+            autofacContainerBuilder.Register(c => new SubObjectOnePS(c.Resolve<IFirstService>())).As<ISubObjectOne>();
+            autofacContainerBuilder.Register(c => new SubObjectTwoPS(c.Resolve<ISecondService>())).As<ISubObjectTwo>();
+            autofacContainerBuilder.Register(c => new SubObjectThreePS(c.Resolve<IThirdService>())).As<ISubObjectThree>();
+            autofacContainerBuilder.Register(c => new Complex1PS(c.Resolve<IFirstService>(), c.Resolve<ISecondService>(), c.Resolve<IThirdService>(), c.Resolve<ISubObjectOne>(), c.Resolve<ISubObjectTwo>(), c.Resolve<ISubObjectThree>())).As<IComplex1>();
+            autofacContainerBuilder.Register(c => new Complex2PS(c.Resolve<IFirstService>(), c.Resolve<ISecondService>(), c.Resolve<IThirdService>(), c.Resolve<ISubObjectOne>(), c.Resolve<ISubObjectTwo>(), c.Resolve<ISubObjectThree>())).As<IComplex2>();
+            autofacContainerBuilder.Register(c => new Complex3PS(c.Resolve<IFirstService>(), c.Resolve<ISecondService>(), c.Resolve<IThirdService>(), c.Resolve<ISubObjectOne>(), c.Resolve<ISubObjectTwo>(), c.Resolve<ISubObjectThree>())).As<IComplex3>();
         }
 
         private static void RegisterOpenGeneric(ContainerBuilder autofacContainerBuilder)

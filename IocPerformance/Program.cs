@@ -8,7 +8,7 @@ namespace IocPerformance
 {
     internal class Program
     {
-        public static List<string> benchmarksToUpdate = new List<string>(){ "01", "02", "03"};
+        public static List<string> benchmarksToUpdate = new List<string>(){"01","02","03","04"};
 
         public static void Main(string[] args)
         {

@@ -5,7 +5,7 @@ namespace IocPerformance.Benchmarks
     [Serializable]
     public struct Measurement
     {
-        public long? Time { get; set; }
+        public double? Time { get; set; }
 
         public bool ExtraPolated { get; set; }
 

@@ -116,6 +116,13 @@
     <Compile Include="Classes\Multiple\SimpleAdapterThree.cs" />
     <Compile Include="Classes\Multiple\SimpleAdapterTwo.cs" />
     <Compile Include="Classes\PostSharpClasses\BaseClassPS.cs" />
+    <Compile Include="Classes\PostSharpClasses\Complex\Complex.cs" />
+    <Compile Include="Classes\PostSharpClasses\Complex\FirstService.cs" />
+    <Compile Include="Classes\PostSharpClasses\Complex\SecondService.cs" />
+    <Compile Include="Classes\PostSharpClasses\Complex\SubObjectOne.cs" />
+    <Compile Include="Classes\PostSharpClasses\Complex\SubObjectThree.cs" />
+    <Compile Include="Classes\PostSharpClasses\Complex\SubObjectTwo.cs" />
+    <Compile Include="Classes\PostSharpClasses\Complex\ThirdService.cs" />
     <Compile Include="Classes\PostSharpClasses\Standard\Calculator.cs" />
     <Compile Include="Classes\PostSharpClasses\Standard\Combined.cs" />
     <Compile Include="Classes\PostSharpClasses\Standard\Singleton.cs" />

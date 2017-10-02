@@ -11,7 +11,11 @@ using IocPerformance.Classes.Complex;
 using IocPerformance.Classes.Dummy;
 using IocPerformance.Classes.Generics;
 using IocPerformance.Classes.Multiple;
+using IocPerformance.Classes.PostSharpClasses.Standard;
 using IocPerformance.Classes.Standard;
+using Transient1 = IocPerformance.Classes.Standard.Transient1;
+using Transient2 = IocPerformance.Classes.Standard.Transient2;
+using Transient3 = IocPerformance.Classes.Standard.Transient3;
 
 namespace IocPerformance.Adapters
 {
@@ -85,7 +89,7 @@ namespace IocPerformance.Adapters
         {
             RegisterDummies(autofacContainerBuilder);
             RegisterStandard(autofacContainerBuilder);
-            RegisterComplexObject(autofacContainerBuilder);
+            //RegisterComplexObject(autofacContainerBuilder);
         }
 
         private static void RegisterDummies(ContainerBuilder autofacContainerBuilder)
@@ -104,17 +108,17 @@ namespace IocPerformance.Adapters
 
         private static void RegisterStandard(ContainerBuilder autofacContainerBuilder)
         {
-            autofacContainerBuilder.Register(c => new Singleton1()).As<ISingleton1>().SingleInstance();
-            autofacContainerBuilder.Register(c => new Singleton2()).As<ISingleton2>().SingleInstance();
-            autofacContainerBuilder.Register(c => new Singleton3()).As<ISingleton3>().SingleInstance();
+            autofacContainerBuilder.Register(c => new Singleton1PS()).As<ISingleton1>().SingleInstance();
+            autofacContainerBuilder.Register(c => new Singleton2PS()).As<ISingleton2>().SingleInstance();
+            autofacContainerBuilder.Register(c => new Singleton3PS()).As<ISingleton3>().SingleInstance();
 
-            autofacContainerBuilder.Register(c => new Transient1()).As<ITransient1>();
-            autofacContainerBuilder.Register(c => new Transient2()).As<ITransient2>();
-            autofacContainerBuilder.Register(c => new Transient3()).As<ITransient3>();
+            autofacContainerBuilder.Register(c => new Transient1PS()).As<ITransient1>();
+            autofacContainerBuilder.Register(c => new Transient2PS()).As<ITransient2>();
+            autofacContainerBuilder.Register(c => new Transient3PS()).As<ITransient3>();
 
-            autofacContainerBuilder.Register(c => new Combined1(c.Resolve<ISingleton1>(), c.Resolve<ITransient1>())).As<ICombined1>();
-            autofacContainerBuilder.Register(c => new Combined2(c.Resolve<ISingleton2>(), c.Resolve<ITransient2>())).As<ICombined2>();
-            autofacContainerBuilder.Register(c => new Combined3(c.Resolve<ISingleton3>(), c.Resolve<ITransient3>())).As<ICombined3>();
+            autofacContainerBuilder.Register(c => new Combined1PS(c.Resolve<ISingleton1>(), c.Resolve<ITransient1>())).As<ICombined1>();
+            autofacContainerBuilder.Register(c => new Combined2PS(c.Resolve<ISingleton2>(), c.Resolve<ITransient2>())).As<ICombined2>();
+            autofacContainerBuilder.Register(c => new Combined3PS(c.Resolve<ISingleton3>(), c.Resolve<ITransient3>())).As<ICombined3>();
         }
 
         private static void RegisterComplexObject(ContainerBuilder autofacContainerBuilder)

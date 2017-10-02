@@ -5,6 +5,7 @@ using IocPerformance.Classes.Child;
 using IocPerformance.Classes.Complex;
 using IocPerformance.Classes.Generics;
 using IocPerformance.Classes.Multiple;
+using IocPerformance.Classes.PostSharpClasses.Standard;
 using IocPerformance.Classes.Standard;
 
 namespace IocPerformance.Benchmarks
@@ -13,7 +14,7 @@ namespace IocPerformance.Benchmarks
     {
         public virtual int LoopCount
         {
-            get => 10;
+            get => 4;
         }
 
         public virtual ThreadingCases Threading => ThreadingCases.Single | ThreadingCases.Multi;
@@ -71,6 +72,15 @@ namespace IocPerformance.Benchmarks
             Transient1.Instances = 0;
             Transient2.Instances = 0;
             Transient3.Instances = 0;
+            Combined1PS.Instances = 0;
+            Combined2PS.Instances = 0;
+            Combined3PS.Instances = 0;
+            Singleton1PS.Instances = 0;
+            Singleton2PS.Instances = 0;
+            Singleton3PS.Instances = 0;
+            Transient1PS.Instances = 0;
+            Transient2PS.Instances = 0;
+            Transient3PS.Instances = 0;
 
             TestController1.DisposeCount = 0;
             TestController1.Instances = 0;

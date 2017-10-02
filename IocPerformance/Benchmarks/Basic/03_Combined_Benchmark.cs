@@ -1,5 +1,6 @@
 ﻿using System;
 using IocPerformance.Adapters;
+using IocPerformance.Classes.PostSharpClasses.Standard;
 using IocPerformance.Classes.Standard;
 using IocPerformance.Interception;
 
@@ -22,6 +23,29 @@ namespace IocPerformance.Benchmarks.Basic
 
         public override void Verify(Adapters.IContainerAdapter container)
         {
+            if (container.Name == "Autofac_With PostSharp")
+            {
+                if (Combined1PS.Instances != this.LoopCount
+                    || Combined2PS.Instances != this.LoopCount
+                    || Combined3PS.Instances != this.LoopCount)
+                {
+                    throw new Exception(string.Format("Combined count must be {0}", this.LoopCount));
+                }
+
+                if (Transient1PS.Instances != this.LoopCount
+                    || Transient2PS.Instances != this.LoopCount
+                    || Transient3PS.Instances != this.LoopCount)
+                {
+                    throw new Exception(string.Format("Transient count must be {0}", this.LoopCount));
+                }
+
+                if (Singleton1PS.Instances > 1 || Singleton2PS.Instances > 1 || Singleton2PS.Instances > 1)
+                {
+                    throw new Exception("Singleton instance count must be 1. Container: " + container.Name);
+                }
+                return;
+            }
+
             if (Combined1.Instances != this.LoopCount
                 || Combined2.Instances != this.LoopCount
                 || Combined3.Instances != this.LoopCount)

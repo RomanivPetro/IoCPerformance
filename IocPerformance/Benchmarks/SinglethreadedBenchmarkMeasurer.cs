@@ -67,7 +67,7 @@ namespace IocPerformance.Benchmarks
 
             if (result.Error == null)
             {
-                result.Time = watch.ElapsedMilliseconds;
+                result.Time = (long?) (watch.Elapsed.TotalMilliseconds * 1000000);
             }
 
             return result;

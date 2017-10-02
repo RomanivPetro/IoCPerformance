@@ -7,8 +7,12 @@ using IocPerformance.Classes.Complex;
 using IocPerformance.Classes.Dummy;
 using IocPerformance.Classes.Generics;
 using IocPerformance.Classes.Multiple;
+using IocPerformance.Classes.PostSharpClasses.Standard;
 using IocPerformance.Classes.Standard;
 using IocPerformance.Interception;
+using Transient1 = IocPerformance.Classes.Standard.Transient1;
+using Transient2 = IocPerformance.Classes.Standard.Transient2;
+using Transient3 = IocPerformance.Classes.Standard.Transient3;
 
 namespace IocPerformance.Adapters
 {
@@ -61,10 +65,10 @@ namespace IocPerformance.Adapters
             autofacContainerBuilder.Register(c => new AutofacInterceptionLogger());
 
             RegisterBasic(autofacContainerBuilder);
-            RegisterOpenGeneric(autofacContainerBuilder);
-            RegisterMultiple(autofacContainerBuilder);
-            RegisterInterceptor(autofacContainerBuilder);
-            RegisterAspNetCore(autofacContainerBuilder);
+            //RegisterOpenGeneric(autofacContainerBuilder);
+            //RegisterMultiple(autofacContainerBuilder);
+            //RegisterInterceptor(autofacContainerBuilder);
+            //RegisterAspNetCore(autofacContainerBuilder);
 
             container = autofacContainerBuilder.Build();
         }
@@ -88,7 +92,7 @@ namespace IocPerformance.Adapters
         {
             RegisterDummies(autofacContainerBuilder);
             RegisterStandard(autofacContainerBuilder);
-            RegisterComplexObject(autofacContainerBuilder);
+            //RegisterComplexObject(autofacContainerBuilder);
         }
 
         private static void RegisterDummies(ContainerBuilder autofacContainerBuilder)

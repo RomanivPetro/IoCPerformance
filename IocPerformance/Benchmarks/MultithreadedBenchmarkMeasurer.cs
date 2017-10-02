@@ -8,7 +8,7 @@ namespace IocPerformance.Benchmarks
 {
     public class MultithreadedBenchmarkMeasurer : BenchmarkMeasurer
     {
-        private readonly int NumberOfThreads = 2;
+        private readonly int NumberOfThreads = 4;
 
         public MultithreadedBenchmarkMeasurer(IContainerAdapter container, IBenchmark benchmark) : base(container, benchmark)
         {
@@ -103,7 +103,7 @@ namespace IocPerformance.Benchmarks
 
             if (result.Error == null)
             {
-                result.Time = watch.ElapsedMilliseconds;
+                result.Time = (long?)(watch.Elapsed.TotalMilliseconds * 1000000);
             }
 
             return result;
